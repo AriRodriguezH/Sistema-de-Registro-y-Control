@@ -510,7 +510,6 @@ class UsuarioController extends Controller
         $viewData = [
             'datosGrafica' => $datosGrafica,
             'rutaImagen' => $rutaImagen, // Pasa la ruta de la imagen
-
         ];
 
         // Usar la opción "options" para configurar los estilos del PDF

@@ -30,7 +30,7 @@ Breadcrumbs::for('cambiarContrasena', function ($trail) {
 Breadcrumbs::for('graficaCumplimiento', function ($trail) {
     $trail->parent('home'); 
     $trail->push('Gráficas'); 
-    $trail->push('Gráfica General MGSI', route('UsuarioController.graficaCumplimientoTodosProcesos')); 
+    $trail->push('Gráfica General SRCCA', route('UsuarioController.graficaCumplimientoTodosProcesos')); 
     $trail->push('Gráfica General de Cumplimiento de Procesos', route('UsuarioController.mostrarGraficaDonas')); 
 
 });
@@ -61,7 +61,7 @@ Breadcrumbs::for('crearprocesoA', function ($trail)  {
 Breadcrumbs::for('graficaDocumentacionCompletaA', function ($trail) {
     $trail->parent('home'); 
     $trail->push('Gráficas'); 
-    $trail->push('Gráficas de los procesos MGSI'); 
+    $trail->push('Gráficas de los procesos SRCCA'); 
     $trail->push('A. Objetivos, requerimientos y estrategias', route('procesoA.graficaDocumentacionCompletaPorAnio')); 
 });
 
@@ -80,7 +80,7 @@ Breadcrumbs::for('crearprocesoB', function ($trail)  {
 Breadcrumbs::for('graficaDocumentacionCompletaB', function ($trail) {
     $trail->parent('home'); 
     $trail->push('Gráficas'); 
-    $trail->push('Gráficas de los procesos MGSI'); 
+    $trail->push('Gráficas de los procesos SRCCA'); 
     $trail->push('B. Identificación de los procesos y activos esenciales ', route('procesoB.graficaDocumentacionCompletaPorAnio')); 
 });
 
@@ -99,7 +99,7 @@ Breadcrumbs::for('crearprocesoC', function ($trail)  {
 Breadcrumbs::for('graficaDocumentacionCompletaC', function ($trail) {
     $trail->parent('home'); 
     $trail->push('Gráficas'); 
-    $trail->push('Gráficas de los procesos MGSI'); 
+    $trail->push('Gráficas de los procesos SRCCA'); 
     $trail->push('C. Análisis de Riesgos', route('procesoC.graficaDocumentacionCompletaPorAnio')); 
 });
 
@@ -118,7 +118,7 @@ Breadcrumbs::for('crearprocesoD', function ($trail)  {
 Breadcrumbs::for('graficaDocumentacionCompletaD', function ($trail) {
     $trail->parent('home'); 
     $trail->push('Gráficas'); 
-    $trail->push('Gráficas de los procesos MGSI'); 
+    $trail->push('Gráficas de los procesos SRCCA'); 
     $trail->push('D. Implementación de los controles mínimos de Seguridad de la Información', route('procesoD.graficaDocumentacionCompletaPorAnio')); 
 });
 
@@ -137,7 +137,7 @@ Breadcrumbs::for('crearprocesoE', function ($trail)  {
 Breadcrumbs::for('graficaDocumentacionCompletaE', function ($trail) {
     $trail->parent('home'); 
     $trail->push('Gráficas'); 
-    $trail->push('Gráficas de los procesos MGSI'); 
+    $trail->push('Gráficas de los procesos SRCCA'); 
     $trail->push('E. Programa de gestión de vulnerabilidades', route('procesoE.graficaDocumentacionCompletaPorAnio')); 
 });
 
@@ -156,7 +156,7 @@ Breadcrumbs::for('crearprocesoF', function ($trail)  {
 Breadcrumbs::for('graficaDocumentacionCompletaF', function ($trail) {
     $trail->parent('home'); 
     $trail->push('Gráficas'); 
-    $trail->push('Gráficas de los procesos MGSI'); 
+    $trail->push('Gráficas de los procesos SRCCA'); 
     $trail->push('F. Protocolo de respuesta ante incidentes de Seguridad de la Información', route('procesoF.graficaDocumentacionCompletaPorAnio')); 
 });
 
@@ -175,7 +175,7 @@ Breadcrumbs::for('crearprocesoG', function ($trail)  {
 Breadcrumbs::for('graficaDocumentacionCompletaG', function ($trail) {
     $trail->parent('home'); 
     $trail->push('Gráficas'); 
-    $trail->push('Gráficas de los procesos MGSI'); 
+    $trail->push('Gráficas de los procesos SRCCA'); 
     $trail->push('G. Plan de Continuidad de Operaciones y Plan de Recuperación ante Desastres', route('procesoG.graficaDocumentacionCompletaPorAnio')); 
 });
 
@@ -194,7 +194,7 @@ Breadcrumbs::for('crearprocesoH', function ($trail)  {
 Breadcrumbs::for('graficaDocumentacionCompletaH', function ($trail) {
     $trail->parent('home'); 
     $trail->push('Gráficas'); 
-    $trail->push('Gráficas de los procesos MGSI'); 
+    $trail->push('Gráficas de los procesos SRCCA'); 
     $trail->push('H. Supervisión y evaluación', route('procesoH.graficaDocumentacionCompletaPorAnio')); 
 });
 
@@ -213,7 +213,7 @@ Breadcrumbs::for('crearprocesoI', function ($trail)  {
 Breadcrumbs::for('graficaDocumentacionCompletaI', function ($trail) {
     $trail->parent('home'); 
     $trail->push('Gráficas'); 
-    $trail->push('Gráficas de los procesos MGSI'); 
+    $trail->push('Gráficas de los procesos SRCCA'); 
     $trail->push('I. Programa de Formación, Concientización y Capacitación en materia de Seguridad de la Información', route('procesoI.graficaDocumentacionCompletaPorAnio')); 
 });
 
@@ -221,7 +221,7 @@ Breadcrumbs::for('graficaDocumentacionCompletaI', function ($trail) {
 Breadcrumbs::for('procesoJ', function ($trail)  {
     $trail->parent('home');
     $trail->push('Procesos'); 
-    $trail->push('J. Programa de implementación del MGSI', route('procesoJ.index')); 
+    $trail->push('J. Programa de implementación del SRCCA', route('procesoJ.index')); 
 });
 
 Breadcrumbs::for('crearprocesoJ', function ($trail)  {
@@ -232,6 +232,6 @@ Breadcrumbs::for('crearprocesoJ', function ($trail)  {
 Breadcrumbs::for('graficaDocumentacionCompletaJ', function ($trail) {
     $trail->parent('home'); 
     $trail->push('Gráficas'); 
-    $trail->push('Gráficas de los procesos MGSI'); 
-    $trail->push('J. Programa de implementación del MGSI', route('procesoJ.graficaDocumentacionCompletaPorAnio')); 
+    $trail->push('Gráficas de los procesos SRCCA'); 
+    $trail->push('J. Programa de implementación del SRCCA', route('procesoJ.graficaDocumentacionCompletaPorAnio')); 
 });

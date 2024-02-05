@@ -47,10 +47,8 @@ Auth::routes();
 Route::get('/mgsi', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('admin', PerfilController::class);
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);
-    Route::resource('blogs', BlogController::class);
     Route::get('/grafica-cumplimiento', [UsuarioController::class, 'mostrarGraficaCumplimiento'])->name('UsuarioController.graficaCumplimientoTodosProcesos');
     Route::get('/grafica-cumplimiento-Donas', [UsuarioController::class, 'mostrarGraficaDonas'])->name('UsuarioController.mostrarGraficaDonas');
 
