@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-
+ 
 @section('title', 'SRCCMGSI')
 
 @section('content_header')
