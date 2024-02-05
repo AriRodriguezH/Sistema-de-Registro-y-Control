@@ -1,0 +1,29 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+#primeraTabla {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #002600;
+    /* Borde exterior grueso y color verde */
+}
+
+#primeraTabla th,
+#primeraTabla td {
+    border: 2px solid #002600;
+    /* Bordado interior grueso y color verde */
+    padding: 8px;
+    text-align: center;
+}
+
+#primeraTabla th {
+    background-color: #004D00;
+    /* Encabezados con color verde fuerte */
+    color: white;
+}
+
+.header {
+    text-align: left;
+}

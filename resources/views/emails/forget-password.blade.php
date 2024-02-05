@@ -1,0 +1,1 @@
+<a href="{{route('forget.password', $token)}}" >kk</a>
