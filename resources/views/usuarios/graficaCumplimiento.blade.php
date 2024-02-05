@@ -9,15 +9,10 @@
 @stop
 
 @section('content')
-@if(isset($datosGrafica) )
 <div class="container">
     <canvas id="graficaCumplimientoTodosProcesos" width="800" height="500"></canvas>
 </div>
-@else
-<p class="text-center">Sin datos para mostrar la gráfica.</p>
-@endif
-
-@if(isset($datosGrafica) )
+        
 <div class="container">
     <div class="d-flex justify-content-center mb-2">
         <a href="#" onclick="capturarImagenYGenerarPDF();" class="btn btn-danger">
@@ -25,10 +20,6 @@
         </a>
     </div>
 </div>
-    
-@endif
-        
-
     
 
 
@@ -49,11 +40,9 @@
 <script src="{{ asset('assests/js/charts/graficaDocumentacionesCompleta.js') }}"></script>
 
 <script>
-    @if(isset($datosGrafica) )
     var datosGrafica = @json($datosGrafica);
     var years = @json($years);
     var coloresProcesos = @json($coloresProcesos);
-    @endif
 </script>
 
 <script>
@@ -75,20 +64,17 @@ function capturarImagenYGenerarPDF() {
         .then(result => {
             if (result.success) {
                 // Redirige al controlador que genera el PDF y pasa el nombre de la imagen
-                var pdfWindow = window.open('{{ url('/generar-pdfCompleto2/') }}' + '/' + result.nombreImagen, '_blank');
+                window.open('{{ url('/generar-pdfCompleto2/') }}' + '/' + result.nombreImagen, '_blank');
 
-                // Attach an event listener for the unload event
-                pdfWindow.onunload = function() {
-                    // Una vez que se cierra la ventana del PDF, envia una solicitud para eliminar la imagen
-                    fetch('{{ url('/eliminar-imagen-linea') }}', {
-                        method: 'POST',
-                        body: JSON.stringify({ nombreImagen: result.nombreImagen }),
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        }
-                    });
-                };
+                // Una vez que se ha descargado el PDF con éxito, envia una solicitud para eliminar la imagen
+                fetch('{{ url('/eliminar-imagen-linea') }}', {
+                    method: 'POST',
+                    body: JSON.stringify({ nombreImagen: result.nombreImagen }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                });
             } else {
                 alert('Error al guardar la imagen.');
             }
@@ -98,11 +84,9 @@ function capturarImagenYGenerarPDF() {
         });
     });
 }
-
 </script>
 
 <script>
-     @if(isset($datosGrafica) )
         document.addEventListener('DOMContentLoaded', function () {
             @foreach ($resultados as $resultado)
                 var ctx = document.getElementById('chart-{{ $resultado['identificador'] }}-{{ $resultado['anio'] }}-{{ $resultado['semestre'] }}').getContext('2d');
@@ -124,6 +108,5 @@ function capturarImagenYGenerarPDF() {
                 });
             @endforeach
         });
-        @endif
     </script>
 @stop

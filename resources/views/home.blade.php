@@ -12,7 +12,7 @@
 <div class="container-fluid">
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Gráfica del Cumplimiento Total del MGSI</h3>
+            <h3 class="card-title">Gráfica del Cumplimiento Total del SRCCA</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
@@ -97,7 +97,7 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box" style="background-color:#6E736D; width: 240px; height: 140px; position: relative;">
                     <div class="inner" style="color: white; font-weight: 700; text-align: center; padding: 10px;">
-                        <h6 style="margin: 10px;">B. Identificación de los procesos y activos esenciales de la CONDUSEF</h6>
+                        <h6 style="margin: 10px;">B. Identificación de los procesos y activos esenciales </h6>
                     </div>
                     <div class="icon">
                         <i class="fas fa-copy"></i>
@@ -220,7 +220,7 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box" style="background-color:#C900A8; width: 240px; height: 140px; position: relative;">
                     <div class="inner" style="color: white; font-weight: 700; text-align: center; padding: 10px;">
-                        <h6 style="margin: 10px;">J. Programa de implementación del MGSI</h6>
+                        <h6 style="margin: 10px;">J. Programa de implementación del SRCCA</h6>
                     </div>
                     <div class="icon">
                         <i class="fas fa-solid fa-book"></i>

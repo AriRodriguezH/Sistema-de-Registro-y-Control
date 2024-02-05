@@ -69,7 +69,7 @@ Breadcrumbs::for('graficaDocumentacionCompletaA', function ($trail) {
 Breadcrumbs::for('procesoB', function ($trail)  {
     $trail->parent('home');
     $trail->push('Procesos'); 
-    $trail->push('B. Identificación de los procesos y activos esenciales de la CONDUSEF', route('procesoB.index')); 
+    $trail->push('B. Identificación de los procesos y activos esenciales', route('procesoB.index')); 
 });
 
 Breadcrumbs::for('crearprocesoB', function ($trail)  {
@@ -81,7 +81,7 @@ Breadcrumbs::for('graficaDocumentacionCompletaB', function ($trail) {
     $trail->parent('home'); 
     $trail->push('Gráficas'); 
     $trail->push('Gráficas de los procesos MGSI'); 
-    $trail->push('B. Identificación de los procesos y activos esenciales de la CONDUSEF', route('procesoB.graficaDocumentacionCompletaPorAnio')); 
+    $trail->push('B. Identificación de los procesos y activos esenciales ', route('procesoB.graficaDocumentacionCompletaPorAnio')); 
 });
 
 /**Proceso C */

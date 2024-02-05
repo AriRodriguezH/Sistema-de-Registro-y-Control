@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'MGSI')
+@section('title', 'SRCCMGSI')
 
 @section('content_header')
-<h4 class="font-weight-bold text-center">Datos Generales</h4>
+<h4 class="font-weight-bold text-center">Perfil</h4>
 <br>
 {{ Breadcrumbs::render('verPerfil') }}
 @stop

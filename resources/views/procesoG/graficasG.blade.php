@@ -1,62 +1,149 @@
-@extends('adminlte::page')
+    @extends('adminlte::page')
 
-@section('title', 'MGSI')
+    @section('title', 'SRCCMGSI')
 
-@section('content_header')
-<h4 class="font-weight-bold text-center">Grafica Proceso G</h4>
-<br>
-{{ Breadcrumbs::render('graficaDocumentacionCompletaG') }}
-@stop
+    @section('content_header')
 
-@section('content')
-<div class="container">
+    @if (!empty($proceso))
+    <h4 class="font-weight-bold text-center">{{ $proceso->identificador }}. {{ $proceso->nombreProceso }}</h4>
+    <br>
+    @endif
+    {{ Breadcrumbs::render('procesoG') }}
 
-    <div class="row justify-content-center">
-        <!-- Primera columna: Gráfica de Documentaciones Entregadas con estatus "Completa"e Incompleta por Año -->
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">Gráfica de Documentaciones Entregadas con estatus "Completa"</div>
-                <div class="card-body">
-                    <canvas id="graficaDocumentacion" style="max-width: 900px; max-height: 245px;"></canvas>
-                </div>
+    @stop
+
+    @section('content')
+
+    @if(session('success_edit'))
+    <div class="alert alert-success">
+        {{ session('success_edit') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Cerrar">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                @can('crear-procesos')
+                <a class="btn btn-primary" href="{{ route('procesoG.create') }}"><i class="fas fa-plus-square"></i> <i style="padding-left: 5px;"></i>Nuevo</a>
+                @endcan
             </div>
         </div>
-        <!-- Segunda columna: Gráfica de Cumplimiento por Semestre -->
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">Gráfica de Cumplimiento por Semestre</div>
-                <div class="card-body">
-                    <canvas id="barChart" style="max-width: 900px; max-height: 245px;"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="d-flex justify-content-center mb-2"> <!-- Alinear al lado derecho -->
-                <a href="{{ url('/generar-pdfG') }}" target="_blank" class="btn btn-danger">
-                    <i class="fas fa-file-pdf"></i> Descargar Reporte
-                </a>
+        <div class="col-md-9">
+            <div class="form-group d-flex justify-content-end">
+                <input type="text" class="form-control col-md-4" id="searchYear" pattern="[0-9]{1,4}" maxlength="4" placeholder="Buscar año:" inputmode="numeric">
+                <button type="button" class="btn btn-secondary ml-2" id="sortAscBtn"><i class="fas fa-arrow-up"></i></button>
+                <button type="button" class="btn btn-secondary ml-2" id="sortDescBtn"><i class="fas fa-arrow-down"></i></button>
             </div>
         </div>
     </div>
-</div>
-@stop
+    <div id="noResults" class="alert alert-info" style="display: none;">Sin resultados</div>
 
-@section('js')
-<!-- Pasar los datos desde PHP a JavaScript -->
-<script>
-    var anios = @json(array_keys($anioCompletas));
-    var completas = @json(array_values($anioCompletas));
-    var incompletas = @json(array_values($anioIncompletas));
-    var porcentajes = @json(array_values($porcentajeCompletas));
 
-    // Datos proporcionados desde el controlador para la gráfica de barras
-    var aniosBar = @json(array_keys($datosGraficaBar));
-    var datosBarras = @json(array_values($datosGraficaBar));
-</script>
+    <div class="card">
+        <div class="card-body">
+            <br>
+            <div class="row">
+                <div class="col-md-12 card-container">
+                    @if(Auth::user()->hasRole('Administrador'))
+                    @foreach($publicaciones as $publicacion)
+                    @if($publicacion->proceso_id === 7)
+                    <div class="card card-success collapsed-card mb-4">
+                        <div class="card-header">
+                            {{ $publicacion->anioRegistro }}
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <a href="{{ route('procesoG.editar', $publicacion->id) }}" class="btn btn-tool">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="{{ route('procesoG.calificar', ['id' => $publicacion->id]) }}" class="btn btn-tool">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="#" class="btn btn-tool delete-publication" data-id="{{$publicacion->id}}">
+                                    <i class="fas fa-trash"></i>
+                                </a>
 
-<!-- Incluir el script para la gráfica de documentación -->
-<script src="{{ asset('assests/js/chart.js') }}"></script>
-<script src="{{ asset('assests/js/charts/graficaDocumentacionesProcesos.js') }}"></script>
-<script src="{{ asset('assests/js/barChart.js') }}"></script>
-@stop
+                                <form id="delete-form-{{$publicacion->id}}" action="{{ route('procesoG.destroy', $publicacion->id) }}" method="POST" style="display: none;">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card-body text-success">
+                            <ul>
+                                @foreach($publicacion->documentacion as $documentacion)
+                                <li>Semestre: {{ $documentacion->semestre }}</li>
+                                <ul>
+                                    <li>{{ $documentacion->descripcion }}</li>
+                                </ul>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    @endif
+                    @endforeach
+                    @else
+                    @foreach($publicaciones as $publicacion)
+                    @if($publicacion->proceso_id === 7)
+
+                    <div class="card card-success collapsed-card mb-4">
+                        <div class="card-header">
+                            {{ $publicacion->anioRegistro }}
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body text-success">
+                            <ul>
+                                @foreach($publicacion->documentacion as $documentacion)
+                                <li>Semestre: {{ $documentacion->semestre }}</li>
+                                <ul>
+                                    <li>{{ $documentacion->descripcion }}
+                                        @if(!Auth::user()->hasRole('Administrador'))
+                                        <br>
+                                        <a href="{{ route('procesoG.responder', ['id' => $publicacion->id, 'documentacionId' => $documentacion->id]) }}">Ver Asignación</a>
+
+                                        @endif
+                                    </li>
+                                </ul>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    @endif
+                    @endforeach
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @stop
+
+    @section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet"  href="{{ asset('assests/css/sweetalert2.min.css')}}">
+    @stop
+
+    @section('js')
+    <script src="{{ asset('assests/js/procesos/busqueda_filtrado.js') }}"></script>
+    <script src="{{ asset('assests/js/jquery-3.5.1.js') }}"></script>
+    <script src="{{ asset('assests/js/procesos/alerta_eliminacion_publicacion.js') }}"></script>
+    <script src="{{ asset('assests/js/sweetalert2.all.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.agregar-documentacion').click(function() {
+                var postId = $(this).data('id');
+                window.location.href = '/documentacion/create?post_id=' + postId;
+            });
+        });
+    </script>
+    @stop

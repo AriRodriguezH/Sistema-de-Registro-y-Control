@@ -91,6 +91,9 @@
                 <div class="col">
                     <div class="form-group">
                         {{ Form::label('archivos_0', 'Archivos Semestre 1:', ['style' => 'font-size: 13px;']) }}
+                        <a href="#" data-toggle="tooltip" title="Los documentos no deben de rebasar el tamaño de 10 MB, de lo contrario no se permitirá su subida" class="ml-2">
+                                <i class="fas fa-question-circle"></i>
+                            </a>
                         <div class="custom-file">
                             {{ Form::file('archivos_0[]', ['class' => 'custom-file-input', 'multiple', 'accept' => '.pdf,.doc,.docx,.xls,.xlsx', 'id' => 'archivos_0', 'data-browse' => 'Seleccionar']) }}
                             <label class="custom-file-label" style="font-size: 13px;" data-browse="Buscar" for="archivos_0">Seleccionar archivos</label>
@@ -118,6 +121,9 @@
                 <div class="col">
                     <div class="form-group">
                         {{ Form::label('archivos_1', 'Archivos Semestre 2:', ['style' => 'font-size: 13px;']) }}
+                        <a href="#" data-toggle="tooltip" title="Los documentos no deben de rebasar el tamaño de 10 MB, de lo contrario no se permitirá su subida" class="ml-2">
+                                <i class="fas fa-question-circle"></i>
+                            </a>
                         <div class="custom-file">
                             {{ Form::file('archivos_1[]', ['class' => 'custom-file-input', 'multiple', 'accept' => '.pdf,.doc,.docx,.xls,.xlsx', 'id' => 'archivos_1', 'data-browse' => 'Seleccionar']) }}
                             <label class="custom-file-label" style="font-size: 13px;" data-browse="Buscar" for="archivos_1">Seleccionar archivos</label>

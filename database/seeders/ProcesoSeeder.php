@@ -31,7 +31,7 @@ class ProcesoSeeder extends Seeder
 
         $nombreProcesos = [
             'Objetivos, requerimientos y estrategias.',
-            'Identificación de los procesos y activos esenciales de la CONDUSEF',
+            'Identificación de los procesos y activos esenciales',
             'Análisis de Riesgos',
             'Implementación de los controles mínimos de Seguridad de la Información',
             'Programa de gestión de vulnerabilidades',

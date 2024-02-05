@@ -23,7 +23,7 @@
 
         <div class="logo text-center">
             <img class="rounded img-fluid mx-auto d-block" src="{{ asset('assests/img/imagen.png')}}" style="width: 150px; height: 115px" />
-            <h1 style="font-family:'Segoe UI'">SRCCMGSI</h1>
+            <h1 style="font-family:'Segoe UI'">MGSI</h1>
         </div>
         
         <<div class="login-box p-5" style="width: 400px; height: 300px;">
@@ -34,7 +34,7 @@
             </div>
 
             <div class="form-group mt-5 mb-0 position-absolute bottom-0 end-0">
-                <p class="semibold-text"><a href="{{ url('/') }}"><i class="fa fa-angle-left fa-fw"></i> Reggresar a Login</a></p>
+                <p class="semibold-text"><a href="{{ url('/') }}"><i class="fa fa-angle-left fa-fw"></i> Regresar a Login</a></p>
             </div>
         </div>
     </section>

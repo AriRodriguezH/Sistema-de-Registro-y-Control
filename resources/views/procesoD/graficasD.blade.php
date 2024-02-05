@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'MGSI')
+@section('title', 'SRCCMGSI')
 
 @section('content_header')
 <h4 class="font-weight-bold text-center">Grafica Proceso D</h4>
@@ -15,7 +15,7 @@
         <!-- Primera columna: Gráfica de Documentaciones Entregadas con estatus "Completa"e Incompleta por Año -->
         <div class="col-md-6">
             <div class="card" >
-                <div class="card-header">Gráfica de Documentaciones Entregadas con estatus "Completa"</div>
+            <div class="card-header">Gráfica de Documentaciones con estatus "Completa"</div>
                 <div class="card-body" >
                     <canvas id="graficaDocumentacion" style="max-width: 900px; max-height: 245px;"></canvas>
                 </div>
@@ -32,8 +32,8 @@
         </div>
 
         <div class="container">
-        <div class="d-flex justify-content-center mb-2"> <!-- Alinear al lado derecho -->
-            <a href="{{ url('/generar-pdfD') }}" target="_blank" class="btn btn-danger">
+        <div class="d-flex justify-content-center mb-2">
+            <a href="#" onclick="capturarImagenYGenerarPDF();" class="btn btn-danger">
                 <i class="fas fa-file-pdf"></i> Descargar Reporte
             </a>
         </div>
@@ -55,8 +55,57 @@
     var datosBarras = @json(array_values($datosGraficaBar));
 </script>
 
+<!-- capturador de las imagenes de gráfica para PDF -->
+<script>
+function capturarImagenYGenerarPDF() {
+    Promise.all([
+        html2canvas(document.getElementById('graficaDocumentacion')),
+        html2canvas(document.getElementById('barChart'))
+    ]).then(([canvas1, canvas2]) => {
+        // Captura las imágenes en formato JPG
+        var image1 = canvas1.toDataURL('image/jpeg');
+        var image2 = canvas2.toDataURL('image/jpeg');
+
+        // Envia ambas imágenes al controlador
+        fetch('{{ url('/guardar-imagenes') }}', {
+            method: 'POST',
+            body: JSON.stringify({ image1: image1, image2: image2 }),
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                // Redirige al controlador que genera el PDF y pasa el nombre de las imagenes
+                window.open('{{ url('/generar-pdfD/') }}' + '/' + result.nombreImagen1 + '/' + result.nombreImagen2, '_blank');
+
+                // Una vez que se ha descargado el PDF con éxito, enviar una solicitud para eliminar las imágenes
+                fetch('{{ url('/eliminar-imagenes') }}', {
+                    method: 'POST',
+                    body: JSON.stringify({ nombreImagen1: result.nombreImagen1, nombreImagen2: result.nombreImagen2 }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                });
+            } else {
+                alert('Error al guardar las imagen 1 y/o imagen 2.');
+            }
+        })
+        .catch(error => {
+            alert('Error al guardar las imágenes: ' + error);
+        });
+    });
+}
+</script>
+
 <!-- Incluir el script para la gráfica de documentación -->
 <script src="{{ asset('assests/js/chart.js') }}"></script>
-<script src="{{ asset('assests/js/charts/graficaDocumentacionesProcesos.js') }}"></script>
+<script  src="{{ asset('assests/js/html2canvas.js') }}"></script>
+<script  src="{{ asset('assests/js/html2canvas.min.js') }}"></script>
+<script src="{{ asset('assests/js/charts/graficaDocumentacionesDona.js') }}"></script>
+<script src="{{ asset('assests/js/charts/graficaDocumentacionesBarra.js') }}"></script>
 <script src="{{ asset('assests/js/barChart.js') }}"></script>
 @stop

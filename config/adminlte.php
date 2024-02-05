@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'MGSI',
+    'title' => 'SRCCA',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>SRCCMGSI</b>',
+    'logo' => '<b>SRCCA</b>',
     'logo_img' => '/assests/img/imagen.png',
     'logo_img_class' => 'brand-image  ',
     'logo_img_xl' => null,
@@ -188,12 +188,12 @@ return [
     */
 
     'classes_body' => '',
-    'classes_brand' => 'btn bg-olive active',
+    'classes_brand' => 'btn bg-info active',
     'classes_brand_text' => '',
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-olive elevation-4 ',
+    'classes_sidebar' => 'sidebar-dark-info elevation-4 ',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -348,7 +348,7 @@ return [
                     'active' => ['procesoA/*'], // Agregamos esta línea para mantener el submenú activo en las rutas relacionadas con ProcesoA
                 ],
                 [
-                    'text' => 'B. Identificación de los procesos y activos esenciales de la CONDUSEF',
+                    'text' => 'B. Identificación de los procesos y activos esenciales',
                     'url'  => '/procesoB',
                     'icon' => 'nav-icon fas fa-copy',
                     'active' => ['procesoB/*'], // Agregamos esta línea para mantener el submenú activo en las rutas relacionadas con ProcesoB
@@ -396,7 +396,7 @@ return [
                     'active' => ['procesoI/*'], // Agregamos esta línea para mantener el submenú activo en las rutas relacionadas con ProcesoI
                 ],
                 [
-                    'text' => 'J. Programa de implementación del MGSI',
+                    'text' => 'J. Programa de implementación del SRCCA',
                     'url'  => '/procesoJ',
                     'icon' => 'nav-icon fas fa-solid fa-book',
                     'active' => ['procesoJ/*'], // Agregamos esta línea para mantener el submenú activo en las rutas relacionadas con ProcesoJ
@@ -409,12 +409,12 @@ return [
             'icon'    => 'nav-icon fas fa-chart-pie',
             'submenu' => [
                 [
-                    'text' => 'Gráfica General MGSI',
+                    'text' => 'Gráfica General SRCCA',
                     'url'  => '/grafica-cumplimiento',
                     'icon' =>'nav-icon fas fa-solid fa-chart-area'
                 ],
                 [
-                    'text'    => 'Gráfica de los Procesos MGSI',
+                    'text'    => 'Gráfica de los Procesos SRCCA',
                     'icon_color' => 'yellow',
                     'submenu' => [
                         [
@@ -424,7 +424,7 @@ return [
                             
                         ],
                         [
-                            'text' => 'B. Identificación de los procesos y activos esenciales de la CONDUSEF',
+                            'text' => 'B. Identificación de los procesos y activos esenciales',
                             'url'  => '/graficasB',
                             'icon' => 'nav-icon fas fa-copy',
                             
@@ -472,7 +472,7 @@ return [
                             
                         ],
                         [
-                            'text' => 'J. Programa de implementación del MGSI   ',
+                            'text' => 'J. Programa de implementación del SRCCA   ',
                             'url'  => '/graficasJ',
                             'icon' => 'nav-icon fas fa-solid fa-book',
                             

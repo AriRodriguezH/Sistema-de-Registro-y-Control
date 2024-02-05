@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'MGSI')
+@section('title', 'SRCCMGSI')
 
 @section('css')
 <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
 @section('content_header')
-<h4 class="font-weight-bold text-center">Alta de Roles</h4>
+<h4 class="font-weight-bold text-center">Alta de roles</h4>
 <br>
 {{ Breadcrumbs::render('crearRol') }}
 

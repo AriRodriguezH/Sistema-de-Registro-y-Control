@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'MGSI')
+@section('title', 'SRCCMGSI')
 
 @section('content_header')
-<h4 class="font-weight-bold text-center">Editar Rol</h4>
+<h4 class="font-weight-bold text-center">Editar rol</h4>
 <br>
 {{ Breadcrumbs::render('editarRol') }}
 @stop

@@ -11,20 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->string('apellidoP');
-            $table->string('apellidoM');
-            $table->boolean('estado');
-            $table->bigInteger('intentoSesion');
-            $table->string('nombreUsuario')->unique();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
-        });
+        // Verifica si la tabla 'users' no existe antes de intentar crearla
+        if (!Schema::hasTable('users')) {
+            Schema::create('users', function (Blueprint $table) {
+                $table->id();
+                $table->string('nombre');
+                $table->string('apellidoP');
+                $table->string('apellidoM');
+                $table->boolean('estado');
+                $table->bigInteger('intentoSesion');
+                $table->string('nombreUsuario')->unique();
+                $table->string('email')->unique();
+                $table->timestamp('email_verified_at')->nullable();
+                $table->string('password');
+                $table->rememberToken();
+                $table->timestamps();
+            });
+        }
     }
 
     /**
@@ -32,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-       Schema::dropIfExists('users');
+        Schema::dropIfExists('users');
     }
 };

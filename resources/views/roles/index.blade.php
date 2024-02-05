@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'MGSI')
+@section('title', 'SRCCMGSI')
 
 @section('content_header')
 <h4 class="font-weight-bold text-center">Roles</h4>
@@ -18,7 +18,6 @@
         @endcan
         <table class="table table-striped table-responsive-sm table-bordered mt-4" width="100%" id="rolesT">
             <thead style="background-color: #2e7555!important">
-                <th style="color:#fff;">ID</th>
                 <th style="color:#fff;">Rol</th>
                 <th style="color:#fff;">Acciones</th>
             </thead>
@@ -45,10 +44,7 @@
             processing: true,
             serverSide: true,
             ajax: "{{ route('datatable.rol') }}",
-            columns: [{
-                    data: 'id',
-                    name: 'id'
-                },
+            columns: [
                 {
                     data: 'name',
                     name: 'name'

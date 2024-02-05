@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'MGSI')
+@section('title', 'SRCCMGSI')
 
 @section('content_header')
 <div class="d-flex justify-content-between align-items-center">
-    <h1 class="font-weight-bold text-center mx-auto">Califica Proceso F</h1>
+    <h4 class="font-weight-bold text-center mx-auto">Calificar publicación</h4>
     <a href="{{ route('procesoF.index', ['return_url' => url()->current()]) }}" class="btn" style="background-color: #AAADAD; color: #FFFFFF; padding-left: 10px;" tabindex="6">
         <i class="fas fa-chevron-left" style="margin-right: 5px;"></i>
         Volver
@@ -145,7 +145,7 @@
                                     </div>
                                     <div class="form-group">
                                         {!! Form::label('comentario', 'Comentario:') !!}
-                                        {!! Form::textarea('comentario', null, ['class' => 'form-control', 'required']) !!}
+                                        {!! Form::textarea('comentario', null, ['class' => 'form-control']) !!}
                                     </div>
                                     {!! Form::hidden('respuesta_id', '', ['id' => 'respuestaIdInput']) !!}
                                     {!! Form::hidden('users_id', '', ['id' => 'usuarioIdInput']) !!}
@@ -290,6 +290,7 @@
 <script src="{{ asset('assests/js/jquery.ui.datepicker-es.js') }}"></script>
 <script src="{{ asset('assests/js/chart.js') }}"></script>
 <script src="{{ asset('assests/js/actualizarCamposModal.js') }}"></script>
+<script src="{{ asset('assests/js/procesos/actualizar_calificacion.js') }}"></script>
 
 <script>
     $(document).ready(function() {
@@ -323,7 +324,7 @@
             labels: ['Cumplimiento', 'Faltante'],
             datasets: [{
                 data: [{{ $calificacion->porcentajeCumplimiento }}, {{ 100 - $calificacion->porcentajeCumplimiento }}],
-                backgroundColor: ['{{ $calificacion->porcentajeCumplimiento >= 50 ? 'rgba(0, 255, 35, 100)' : 'red' }}', 'rgba(237, 237, 237, 93)']
+                backgroundColor: ['{{ $calificacion->porcentajeCumplimiento >= 80 ? 'rgba(0, 255, 35, 100)' : 'red' }}', 'rgba(237, 237, 237, 93)']
             }]
         };
 

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'MGSI')
+@section('title', 'SRCCMGSI')
 
 @section('content_header')
-<h4 class="font-weight-bold text-center">Cambiar Contraseña</h4>
+<h4 class="font-weight-bold text-center">Cambiar contraseña</h4>
 <br>
 {{ Breadcrumbs::render('cambiarContrasena') }}
 @stop
@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
-                    <button type="submit" class="btn btn-primary">Cambiar Contraseña</button>
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
                 </div>
 
                 {!! Form::close() !!}
